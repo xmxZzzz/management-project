@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/1.1.3/axios.min.js"></script>
+
+<div>
+    <button onclick="testGet()">GET查询</button>
+    <button onclick="testPost()">Post 新增</button>
+    <button onclick="testPut()">Put更新</button>
+    <button onclick="testDelete()">DELETE删除</button>
+</div>
+
+<script>
+  function testGet(){
+    // axios.get(" http://localhost:3000/posts")
+    // axios.get(" http://localhost:3000/posts/2")
+    axios.get(" http://localhost:3000/posts?id=2")
+      .then(res=>{
+        console.log('/posts get',res.data)
+      })
+  }
+
+  function testPost(){
+    axios.post(" http://localhost:3000/posts",{"title":"json-server3","author":"typeicode3"})
+      .then(res=>{
+        console.log('/posts post',res.data)
+      })
+  }
+
+  function testPut(){
+    axios.put(" http://localhost:3000/posts/3",{"title":"json-server..","author":"typeicode.."})
+      .then(res=>{
+        console.log('/posts put',res.data)
+      })
+  }
+
+  function testDelete(){
+    axios.delete(" http://localhost:3000/posts?id=3")
+      .then(res=>{
+        console.log('/posts get',res.data)
+      })
+  }
+</script>
+</body>
+</html>

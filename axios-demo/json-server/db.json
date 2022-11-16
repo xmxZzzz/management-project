@@ -1,0 +1,29 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typeicode"
+    },
+    {
+      "id": 2,
+      "title": "json-server2",
+      "author": "typeicode2"
+    },
+    {
+      "title": "json-server3",
+      "author": "typeicode3",
+      "id": 3
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comments",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typeicode"
+  }
+}
