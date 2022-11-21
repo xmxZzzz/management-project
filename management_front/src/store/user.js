@@ -1,7 +1,7 @@
 export default {
   state: {
     token: '',
-    user: null
+    user: JSON.parse(sessionStorage.getItem('user')) || null
   },
   getters: {
     user: (state) => {
@@ -14,15 +14,15 @@ export default {
   },
   mutations: {
     getToken (state) {
-      state.token = state.token || sessionStorage.getItem('token')
+      state.token = state.token || localStorage.getItem('token')
     },
     setToken (state, value) {
       state.token = value
-      sessionStorage.setItem('token', value)
+      localStorage.setItem('token', value)
     },
     clearToken (state) {
       state.token = ''
-      sessionStorage.removeItem('token')
+      localStorage.removeItem('token')
     },
     setUser (state, user) {
       sessionStorage.setItem('user', JSON.stringify(user))

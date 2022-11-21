@@ -1,11 +1,11 @@
 # Json-server
 监视db.json，支持在浏览器查看get请求
 
-## param 和 query
-- param
+## 参数
+- query
   - comments?id=1
   - 返回的是筛选后的结果，即数组
-- query
+- body
   - comments/1
   - 返回的是对象
 

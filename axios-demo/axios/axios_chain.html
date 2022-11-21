@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>axios的处理流程</title>
+</head>
+<body>
+<div>
+    <button onclick="testGet()">GET查询</button>
+    <button onclick="testPost()">POST新增</button>
+    <button onclick="testPut()">PUT更新</button>
+    <button onclick="testDelete()">DELETE删除</button>
+</div>
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/1.1.3/axios.min.js"></script>
+<script>
+
+  axios.defaults.baseURL = 'http://localhost:3000'
+
+  /*
+  * 拦截器
+  *     1、拦截器本质就是回调函数
+  *     2、多个请求/响应拦截器串联，必须return config/response
+  *     3、return config/response  ==> return Promise.resolve(config/response)
+  *     4、多个请求拦截器：先声明后打印
+  *        多个响应拦截器：先声明先打印
+  * */
+
+  // 添加请求拦截器
+  axios.interceptors.request.use(
+    config => {
+      console.log('request interceptor1 onResolved()')
+      return config
+    },
+    error => {
+      console.log('request interceptor1 onRejected()')
+      return Promise.reject(error)
+    }
+  )
+
+  axios.interceptors.request.use(
+    config => {
+      console.log('request interceptor2 onResolved()')
+      return Promise.resolve(config)
+    },
+    error => {
+      console.log('request interceptor2 onRejected()')
+      return Promise.reject(error)
+    }
+  )
+
+  // 添加响应拦截器
+  axios.interceptors.response.use(
+    response => {
+      console.log('response interceptor1 onResolved()')
+      return response
+    },
+    error => {
+      console.log('response interceptor1 onRejected()')
+      return Promise.reject(error)
+    }
+  )
+
+  axios.interceptors.response.use(
+    response => {
+      console.log('response interceptor2 onResolved()')
+      return response
+    },
+    error => {
+      console.log('response interceptor2 onRejected()')
+      return Promise.reject(error)
+    }
+  )
+
+  axios.get('/posts/1').then(response => console.log('data1', response.data)).catch(error => console.log('error1', error.message))
+  // axios.get('/posts/2').then(response => console.log('data2', response.data)).catch(error => console.log('error2', error.message))
+
+    /*
+     *   控制台打印结果：
+     *  request interceptor2 onResolved()
+        request interceptor1 onResolved()
+        response interceptor1 onResolved()
+        response interceptor2 onResolved()
+        data1 {id: 1, title: 'json-server', author: 'typeicode'}
+    *
+    * */
+
+</script>
+
+</body>
+</html>

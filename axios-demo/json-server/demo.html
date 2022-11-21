@@ -41,7 +41,7 @@
   }
 
   function testDelete(){
-    axios.delete(" http://localhost:3000/posts?id=3")
+    axios.delete(" http://localhost:3000/posts/3")
       .then(res=>{
         console.log('/posts get',res.data)
       })

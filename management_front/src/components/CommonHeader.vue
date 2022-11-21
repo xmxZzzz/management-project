@@ -10,7 +10,7 @@
       <img :src="userIcon" class="user-icon" alt=""/>
       <el-dropdown trigger="click">
         <span class="el-dropdown-link">
-          admin<em class="el-icon-arrow-down el-icon--right" />
+          {{username}}<em class="el-icon-arrow-down el-icon--right" />
         </span>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item @click.native="handleUserInfo">个人中心</el-dropdown-item>
@@ -28,7 +28,8 @@ export default {
   name: 'CommonHeader',
   computed: {
     ...mapState({
-      tagList: (state) => state.main.tagList
+      tagList: (state) => state.main.tagList,
+      username: (state) => state.user.user.username
     })
   },
   data () {
@@ -36,6 +37,7 @@ export default {
       userIcon: require('../assets/images/user-default.png')
     }
   },
+
   methods: {
     clickBreadcrumb (item) {
       this.$store.commit('setCurrentMenu', item)

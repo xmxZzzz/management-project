@@ -26,6 +26,13 @@ export default {
                   label: '菜单管理',
                   icon: 'menu',
                   url: 'system/menus/index'
+                },
+                {
+                  path: '/system/role',
+                  name: 'Role',
+                  label: '角色管理',
+                  icon: 'user',
+                  url: 'system/role/index'
                 }
               ]
             }

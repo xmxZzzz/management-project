@@ -7,6 +7,7 @@
       <el-header :height="headerHeight+'px'">
         <common-header />
       </el-header>
+      <common-tag />
       <el-main>
         <router-view />
       </el-main>
@@ -17,6 +18,7 @@
 <script>
 import CommonAside from '@/components/CommonAside'
 import CommonHeader from '@/components/CommonHeader'
+import CommonTag from '../components/CommonTag'
 import {
   defaultHeaderHeight
 } from '../common/settings'
@@ -24,7 +26,8 @@ export default {
   name: 'Main',
   components: {
     CommonAside,
-    CommonHeader
+    CommonHeader,
+    CommonTag
   },
   computed: {
     headerHeight () {

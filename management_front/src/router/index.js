@@ -21,6 +21,12 @@ const routes = [
         name: 'Menus',
         meta: { title: '菜单管理' },
         component: () => import('../views/system/menus')
+      },
+      {
+        path: 'system/role',
+        name: 'Role',
+        meta: { title: '角色管理' },
+        component: () => import('../views/system/role')
       }
     ]
   },

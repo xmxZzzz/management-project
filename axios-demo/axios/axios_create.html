@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>axios-create</title>
+</head>
+<body>
+<div>
+    <button onclick="testGet()">GET查询</button>
+    <button onclick="testPost()">POST新增</button>
+    <button onclick="testPut()">PUT更新</button>
+    <button onclick="testDelete()">DELETE删除</button>
+</div>
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/1.1.3/axios.min.js"></script>
+<script>
+    /*
+    * 1) axios.create(config)
+    *   a. 根据指定配置创建一个新的axios，也就是每一个新的axios都有自己的配置
+    *   b. 新axios只是没有取消请求和批量发送请求到方法，其它所有语法都是一致的
+    *   c. 为什么要设计这个语法？
+    *       需求：项目中有部分接口需要的配置与另一部分接口需要的配置不大一样，如何处理？
+    *       解决：创建2个新的axios，每个都有自己特有的配置，分别应用到不同要求的接口请求中
+    * */
+
+    // axios.defaults.baseURL = 'http://localhost:4000'
+    // axios({
+    //   url: '/xxx'
+    // })
+
+    // 此时instance是一个函数类型
+    const instance = axios.create({
+      baseURL: 'http://localhost:3000'
+    })
+
+    instance({
+      url: 'posts'
+    })
+    // 上述的语法糖
+    instance.get("/posts/1")
+
+</script>
+
+</body>
+</html>

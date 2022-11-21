@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>axios的取消请求</title>
+</head>
+<body>
+<div>
+    <button onclick="getProduct1()">获取商品1</button>
+    <button onclick="getProduct2()">获取商品2</button>
+    <button onclick="cancelReq()">取消请求</button>
+</div>
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/1.1.3/axios.min.js"></script>
+<script>
+
+  // 用于保存取消请求的函数
+  let cancel
+
+  function getProduct1 () {
+    axios.get('http://localhost:4000/products1', {
+      cancelToken: new axios.CancelToken(c => cancel = c)
+    }).then(res => {
+      cancel = null
+      console.log('请求1成功', res.data)
+    }).catch(error => {
+      cancel = null
+      console.log('请求1失败了', error.message, error)
+    })
+  }
+
+  function getProduct2 () {
+    axios({
+      url: 'http://localhost:4000/products2',
+      // 定义取消请求
+      // c是用于取消当前请求的函数
+      cancelToken: new axios.CancelToken(function executor (c) {
+        cancel = c
+      })
+    }).then(res => {
+      cancel = null
+      console.log('请求2成功', res.data)
+    }).catch(error => {
+      cancel = null
+      console.log('请求2失败了', error.message, error)
+    })
+  }
+
+  function cancelReq () {
+    // alert('cancelReq')
+    if (typeof cancel === 'function') {
+      cancel('强制取消请求')
+    } else {
+      console.log('没有可取消的请求')
+    }
+  }
+</script>
+
+</body>
+</html>

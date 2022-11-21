@@ -23,7 +23,8 @@ import {
   BreadcrumbItem,
   Dropdown,
   DropdownMenu,
-  DropdownItem
+  DropdownItem,
+  Tag
 } from 'element-ui'
 
 const element = {
@@ -49,6 +50,7 @@ const element = {
     Vue.use(Dropdown)
     Vue.use(DropdownMenu)
     Vue.use(DropdownItem)
+    Vue.use(Tag)
 
     Vue.prototype.$message = Message
     Vue.prototype.$messageBox = MessageBox
