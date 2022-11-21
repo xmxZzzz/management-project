@@ -53,6 +53,7 @@ export default {
       this.$store.commit('clearMenu')
       this.$store.commit('clearTagList')
       this.$store.commit('clearUser')
+      sessionStorage.clear()
       this.$router.push('/login')
     }
   }

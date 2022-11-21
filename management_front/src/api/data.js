@@ -34,3 +34,10 @@ export const getData = () => {
     // method: 'get'
   })
 }
+
+export const getDemoData = () => {
+  return axiosIns({
+    url: '/hello'
+    // method: 'get'
+  })
+}

@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { getMenu } from '../../api/data.js'
+import { getMenu, getDemoData } from '../../api/data.js'
 export default {
   name: 'Login',
   data () {
@@ -39,6 +39,11 @@ export default {
         ]
       }
     }
+  },
+  created () {
+    getDemoData().then(res => {
+      console.log(res)
+    })
   },
   methods: {
     login () {

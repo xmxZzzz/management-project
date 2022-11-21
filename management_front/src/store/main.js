@@ -78,14 +78,6 @@ export default {
       const index = state.tagList.findIndex(item => item.name === tag.name)
       if (index !== -1) {
         state.tagList.splice(index, 1)
-        const currentMenu = state.menu.find(item => item.name === tag.name)
-        if (currentMenu) {
-          state.currentMenu = currentMenu
-        } else {
-          if (state.tagList.length === 1) {
-            state.currentMenu = null
-          }
-        }
       }
     }
   }
